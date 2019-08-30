@@ -1,0 +1,61 @@
+<!-- <mat-card>
+  <mat-card-title>{{ contact.name }}</mat-card-title>
+  <mat-card-content>Address: {{ contact.address }}</mat-card-content>
+  <mat-card-content>Mobile phone: {{ contact.mobile }}</mat-card-content>
+  <mat-card-content>Home phone: {{ contact.home }}</mat-card-content>
+  <button mat-button color="warn" (click)="onClick()">Delete</button>
+</mat-card> -->
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState= true"
+    (closed)="panelOpenState= false">
+    <mat-expansion-panel-header>
+      <mat-panel-title [id]="contact.name">
+        {{contact.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Address: {{ contact.address }}</p>
+    <p>Mobile: {{ contact.mobile }}</p>
+    <p>Home: {{ contact.home }}</p>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Edit
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm.value)">
+        <mat-form-field>
+          <input matInput placeholder="name"
+            [formControl]="name">
+          <mat-error *ngIf="name.invalid">
+            Please enter a valid name!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="address"
+            [formControl]="address">
+          <mat-error *ngIf="address.invalid">
+            Please enter a valid address!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="mobile"
+            [formControl]="mobile">
+          <mat-error *ngIf="mobile.invalid">
+            Please enter a valid mobile phone number!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="home"
+            [formControl]="home">
+          <mat-error *ngIf="home.invalid">
+            Please enter a valid home phone number!
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" mat-button color="primary"
+          [disabled]="!editForm.valid">Save Contact</button>
+      </form>
+    </mat-expansion-panel>
+    <button mat-button color="warn" (click)="onClick()">Delete Contact</button>
+  </mat-expansion-panel>
+</mat-accordion>

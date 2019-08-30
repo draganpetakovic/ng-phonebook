@@ -1,0 +1,11 @@
+
+<app-new-contact-form (submittedForm)="addContact($event)"></app-new-contact-form>
+<app-search></app-search>
+<div fxLayout="row wrap"
+  fxLayoutAlign="space-around">
+  <div *ngFor='let contact of contacts'>
+    <app-contact [contact]="contact"
+      (update)="updateContact(contact, $event)"
+      (delete)="deleteContact(contact)"></app-contact>
+  </div>
+</div>

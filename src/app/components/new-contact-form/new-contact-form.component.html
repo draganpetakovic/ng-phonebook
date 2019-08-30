@@ -1,0 +1,43 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)"
+  fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field>
+    <mat-icon matSuffix>person</mat-icon>
+    <input matInput placeholder="name" name="name"
+      [formControl]="name" required>
+    <mat-error *ngIf="name.touched && name.invalid">
+      <mat-error *ngIf='name.errors.required'>Name is required</mat-error>
+      <mat-error *ngIf='name.errors.pattern'>Please enter a valid name</mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-icon matSuffix>home</mat-icon>
+    <input matInput placeholder="address" name="address"
+      [formControl]="address" required>
+    <mat-error *ngIf="address.touched && address.invalid">
+      <mat-error *ngIf='address.errors.required'>Address is required</mat-error>
+      <mat-error *ngIf='address.errors.pattern'>Please enter a valid address</mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-icon matSuffix>smartphone</mat-icon>
+    <input matInput placeholder="Mobile phone" name="mobile"
+      [formControl]="mobile" required>
+    <mat-error *ngIf="mobile.touched && mobile.invalid">
+      <mat-error *ngIf='mobile.errors.required'>Mobile phone number is required</mat-error>
+      <mat-error *ngIf='mobile.errors.pattern'>Please enter a valid mobile phone
+        number</mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-icon matSuffix>phone</mat-icon>
+    <input matInput placeholder="Home phone" name="home"
+      [formControl]="home" required>
+    <mat-error *ngIf="home.touched && home.invalid">
+      <mat-error *ngIf='home.errors.required'>Home phone is required</mat-error>
+      <mat-error *ngIf='home.errors.pattern'>Please enter a valid home phone
+        number</mat-error>
+    </mat-error>
+  </mat-form-field>
+  <button mat-button color="primary" type="submit"
+    [disabled]="!contactForm.valid">Add new Contact</button>
+</form>
